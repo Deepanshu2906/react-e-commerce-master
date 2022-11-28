@@ -39,7 +39,12 @@
     margin: auto 10px;
     border-radius: 10px;
 }
-
+.deleteButton{
+    height:50px;
+    background-color: gold;
+    align-self: center;
+    border-radius: 10px;
+}
 
 .btn-group {
     border-radius: 10px;

@@ -30,6 +30,9 @@ function CartItem(prop) {
       </div>
 
       <div className="container-2">
+        <button onClick={() => handleDelete()} class="deleteButton">
+          Delete item
+        </button>
         <div className="container">
           <h4>&#8377; {totalPrice}</h4>
         </div>
@@ -38,7 +41,7 @@ function CartItem(prop) {
           <button
             className="btn btn-minus"
             onClick={() =>
-              handleQuantityChange(quantity == 1 ? 0 : quantity - 1)
+              handleQuantityChange(quantity <= 1 ? 0 : quantity - 1)
             }
           >
             -
