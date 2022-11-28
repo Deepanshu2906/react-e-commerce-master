@@ -1,0 +1,19 @@
+
+.login-container{
+    margin: 3% 12%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    width: 30%;
+    border:1px solid purple;
+    padding: 3% 1%;
+    border-radius: 8px;
+}
+h3{
+    text-align: center;
+    margin-bottom: 20px;
+}
