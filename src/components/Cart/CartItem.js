@@ -17,6 +17,9 @@ function CartItem(prop) {
     // Step 5: Call parent's function with new quantity.
     prop.updatePrice(prop.item, newQuantity);
   }
+  function handleDelete(index) {
+    prop.deleteItem(index);
+  }
 
   return (
     <div className="cart-item">
@@ -30,7 +33,10 @@ function CartItem(prop) {
       </div>
 
       <div className="container-2">
-        <button onClick={() => handleDelete()} class="deleteButton">
+        <button
+          onClick={() => handleDelete(prop.index)}
+          className="deleteButton"
+        >
           Delete item
         </button>
         <div className="container">

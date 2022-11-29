@@ -12,8 +12,8 @@ function Cart() {
     fetch("product.json")
       .then((res) => res.json())
       .then((res) => {
-        updateTotalPrice(res);
         setCartItem(res);
+        updateTotalPrice(res);
       });
   }, []);
 
@@ -25,7 +25,6 @@ function Cart() {
     setCartItem(items);
     updateTotalPrice(items);
   }
-
   // 1. Update Total Price = sum of price*quantity for each cart items.
   function updateTotalPrice(res) {
     let sum = 0;
@@ -33,6 +32,14 @@ function Cart() {
       sum = sum + Number(res[i].price) * Number(res[i].qty);
     }
     setTotalPrice(sum);
+  }
+
+  // delete items
+  function deleteItemFromCart(index) {
+    let updatedItems = cartItems;
+    updatedItems.splice(index, 1);
+    setCartItem(updatedItems);
+    updateTotalPrice(updatedItems);
   }
 
   return (
@@ -45,14 +52,14 @@ function Cart() {
           <CartItem
             // 4. Pass function as props.
             updatePrice={updatePrice}
+            deleteItem={deleteItemFromCart}
             key={index}
             item={item}
-            index={index}
+            id={index}
           />
         ))}
       </div>
     </div>
   );
 }
-
 export default Cart;
