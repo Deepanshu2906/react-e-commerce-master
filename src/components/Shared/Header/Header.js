@@ -41,6 +41,11 @@ function Header() {
                 Sign In
               </a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/cart">
+                Cart
+              </a>
+            </li>
           </ul>
         </div>
       </div>

@@ -4,6 +4,21 @@ function ProductCard(values) {
   let stars = [];
   // const ratingStart = Math.ceil(Number(values.item.rating.rate));
   // console.log(ratingStart);
+
+  // creating local storage
+  function handleAddToCart() {
+    let cart = localStorage.getItem("ourCart");
+    if (!cart) {
+      let cartItems = [];
+      cartItems.push(values.item);
+      localStorage.setItem("ourCart", JSON.stringify(cartItems));
+    } else {
+      let cartItems = JSON.parse(cart);
+      cartItems.push(values.item);
+      localStorage.setItem("ourCart", JSON.stringify(cartItems));
+    }
+  }
+
   for (let i = 0; i < Number(values.item.rating.rate); i++) {
     stars[i] = 1;
   }
@@ -36,7 +51,7 @@ function ProductCard(values) {
           <span>({values.item.rating.count})</span>
         </p>
         <p className="card-text">{values.item.description}</p>
-        <a href="#" className="btn btn-success float-end">
+        <button className="btn btn-success flex-box" onClick={handleAddToCart}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -52,7 +67,7 @@ function ProductCard(values) {
             <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
           </svg>
           &nbsp;Cart
-        </a>
+        </button>
       </div>
     </div>
   );

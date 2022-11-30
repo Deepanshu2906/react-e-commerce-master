@@ -22,6 +22,7 @@ function Home() {
       .then((res) => {
         // console.log("fetching data");
         res.forEach((o) => {
+          o.qty = 1;
           o.rating.rate = Math.ceil(Number(o.rating.rate));
         });
         // console.log(res);

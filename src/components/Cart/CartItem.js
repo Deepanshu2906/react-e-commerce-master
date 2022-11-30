@@ -8,7 +8,7 @@ function CartItem(prop) {
   // to update to price on each refresh
   useEffect(() => {
     setPrice(prop.item.price);
-  }, [prop]); //
+  }, [prop]);
 
   function handleQuantityChange(newQuantity) {
     if (newQuantity > 0) {
@@ -35,7 +35,7 @@ function CartItem(prop) {
           <img className="cart-img" src={prop.item.image}></img>
         </div>
         <div className="container">
-          <h4>{prop.item.name}</h4>
+          <h4>{prop.item.title}</h4>
         </div>
       </div>
 
