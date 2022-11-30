@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./CartItem.css";
 
 function CartItem(prop) {
   let [quantity, setQuantity] = useState(1);
   let [totalPrice, setPrice] = useState(prop.item.price);
+
+  // to update to price on each refresh
+  useEffect(() => {
+    setPrice(prop.item.price);
+  }, [prop]); //
+
   function handleQuantityChange(newQuantity) {
     if (newQuantity > 0) {
       totalPrice = Number(prop.item.price) * newQuantity;
@@ -17,6 +23,7 @@ function CartItem(prop) {
     // Step 5: Call parent's function with new quantity.
     prop.updatePrice(prop.item, newQuantity);
   }
+
   function handleDelete(index) {
     prop.deleteItem(index);
   }

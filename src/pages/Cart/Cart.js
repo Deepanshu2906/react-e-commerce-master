@@ -25,6 +25,7 @@ function Cart() {
     setCartItem(items);
     updateTotalPrice(items);
   }
+
   // 1. Update Total Price = sum of price*quantity for each cart items.
   function updateTotalPrice(res) {
     let sum = 0;
@@ -35,11 +36,16 @@ function Cart() {
   }
 
   // delete items
-  function deleteItemFromCart(index) {
-    let updatedItems = cartItems;
-    updatedItems.splice(index, 1);
-    setCartItem(updatedItems);
-    updateTotalPrice(updatedItems);
+  function deleteItem(index) {
+    // pass by ref ki vajah se refesh nahi ho raha
+    //let updatedItems = [...cartItems];
+    //or
+    let items = cartItems;
+    items.splice(index, 1);
+    setCartItem(items.slice()); // copy same array
+
+    // ..updating total price also ----
+    updateTotalPrice(items);
   }
 
   return (
@@ -52,7 +58,7 @@ function Cart() {
           <CartItem
             // 4. Pass function as props.
             updatePrice={updatePrice}
-            deleteItem={deleteItemFromCart}
+            deleteItem={deleteItem}
             key={index}
             item={item}
             id={index}
