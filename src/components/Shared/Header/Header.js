@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useState } from "react";
 import { AppContext } from "../../../Context";
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 function Header(props) {
   const { cartItems } = useContext(AppContext);
@@ -21,9 +22,9 @@ function Header(props) {
           <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
         </svg>
         &nbsp;&nbsp;
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           E-Shop
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -38,14 +39,14 @@ function Header(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mb-2 mb-lg-0 links">
             <li className="nav-item">
-              <a className="btn btn-primary" href="/cart">
+              <Link className="btn btn-primary" to="/cart">
                 Cart &nbsp;&nbsp;
                 {cartItems.length > 0 && (
                   <span className="badge text-bg-warning">
                     {cartItems.length}
                   </span>
                 )}
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/register">

@@ -17,11 +17,17 @@ function App() {
     switch (actionType) {
       case "ADD_ITEM": {
         // setCartItems(...cartItems, payload);
-        console.log(payload);
+        // console.log(payload);
         let items = cartItems.slice();
         items.push(payload);
         setCartItems(items);
-        console.log(items);
+        break;
+      }
+      case "UPDATE_ITEM": {
+        let items = cartItems.slice();
+        let index = items.findIndex((p) => p.id === payload.id);
+        items[index] = payload;
+        setCartItems(items);
         break;
       }
       default: {

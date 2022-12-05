@@ -1,35 +1,23 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../Context";
 import "./CartItem.css";
 
 function CartItem(prop) {
-  let [quantity, setQuantity] = useState(1);
   let [totalPrice, setPrice] = useState(prop.item.price);
+
+  const { dispatcherEvents } = useContext(AppContext);
 
   // to update to price on each refresh
   useEffect(() => {
-    console.log("effect");
-    if (quantity > 0) {
-      setPrice(prop.item.price);
-    }
+    let price = prop.item.qty * prop.item.price;
+    setPrice(Math.ceil(price));
   }, [prop]);
 
   function handleQuantityChange(newQuantity) {
-    // console.log(newQuantity);
-    if (newQuantity > 0) {
-      totalPrice = Number(prop.item.price) * newQuantity;
-
-      setQuantity(newQuantity);
-      setPrice(totalPrice);
-
-      // console.log(totalPrice);
-    } else {
-      totalPrice = 0;
-      setPrice(totalPrice);
-      setQuantity(0);
-    }
-    // Step 5: Call parent's function with new quantity.
-    // console.log(newQuantity);
-    prop.updatePrice(prop.item, newQuantity);
+    console.log(newQuantity);
+    prop.item.qty = newQuantity;
+    console.log(prop.item);
+    dispatcherEvents("UPDATE_ITEM", prop.item);
   }
 
   function handleDelete(index) {
@@ -62,15 +50,15 @@ function CartItem(prop) {
           <button
             className="btn btn-minus"
             onClick={() =>
-              handleQuantityChange(quantity <= 1 ? 0 : quantity - 1)
+              handleQuantityChange(prop.item.qty <= 1 ? 0 : prop.item.qty - 1)
             }
           >
             -
           </button>
-          <button className="btn btn-primary">{quantity}</button>
+          <button className="btn btn-primary">{prop.item.qty}</button>
           <button
             className="btn btn-plus"
-            onClick={() => handleQuantityChange(quantity + 1)}
+            onClick={() => handleQuantityChange(prop.item.qty + 1)}
           >
             +
           </button>

@@ -7,7 +7,7 @@ function ProductCard(values) {
 
   function handleAddToCart() {
     dispatcherEvents("ADD_ITEM", values.item);
-    values.notify();
+    // values.notify();
   }
 
   let stars = [];

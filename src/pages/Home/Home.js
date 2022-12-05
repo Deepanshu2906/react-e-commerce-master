@@ -37,7 +37,6 @@ function Home() {
   //     const cartItems = JSON.parse(items);
   //     setCartItemCount(cartItems.length);
   //   }
-  // }
 
   return (
     <div>
