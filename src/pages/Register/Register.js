@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Register.css";
+// import "./Register.css";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
@@ -20,7 +20,7 @@ function Register() {
     <div className="register-form">
       <h3>Please Register.</h3>
       <hr />
-      <form onSubmit={handleFormSubmit} action="">
+      <form onSubmit={handleFormSubmit} className="register-form" action="">
         <div className="mb-3">
           <label htmlFor="" className="form-label">
             Email

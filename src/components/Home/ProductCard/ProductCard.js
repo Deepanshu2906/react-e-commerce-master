@@ -17,6 +17,7 @@ function ProductCard(values) {
       cartItems.push(values.item);
       localStorage.setItem("ourCart", JSON.stringify(cartItems));
     }
+    values.notify();
   }
 
   for (let i = 0; i < Number(values.item.rating.rate); i++) {

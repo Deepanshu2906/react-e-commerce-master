@@ -9,7 +9,7 @@ function Login() {
   return (
     <div className="login-container">
       <h3>Sign In.</h3>
-      <form action="" onSubmit={handleLogin}>
+      <form action="" onSubmit={handleLogin} className="login-form">
         <div className="mb-3">
           <label htmlFor="" className="form-label">
             Email

@@ -12,8 +12,10 @@ function Cart() {
     // now on add to cart  we are adding the items to local storage then fetching
     let cart = localStorage.getItem("ourCart");
     let cartItems = JSON.parse(cart);
-    setCartItem(cartItems);
-    updateTotalPrice(cartItems);
+    if (cart) {
+      setCartItem(cartItems);
+      updateTotalPrice(cartItems);
+    }
 
     // fetch("product.json")
     //   .then((res) => res.json())
@@ -26,7 +28,7 @@ function Cart() {
   // Step 3: takes new quantity and update cart items. passing function as props to child
   function updatePrice(item, newQuantity) {
     let items = cartItems;
-    let cartItemIndex = items.findIndex((i) => i.name === item.name);
+    let cartItemIndex = items.findIndex((i) => i.title === item.title);
     items[cartItemIndex].qty = newQuantity;
     setCartItem(items);
     updateTotalPrice(items);
@@ -38,20 +40,21 @@ function Cart() {
     for (let i = 0; i < res.length; i++) {
       sum = sum + Number(res[i].price) * Number(res[i].qty);
     }
-    setTotalPrice(sum);
+    setTotalPrice(Math.ceil(sum));
   }
 
   // delete items
   function deleteItem(index) {
-    // pass by ref ki vajah se refesh nahi ho raha
+    // pass by ref(as array is an object) ki vajah se refesh nahi ho raha
     //let updatedItems = [...cartItems];
     //or
     let items = cartItems;
-    items.splice(index, 1);
-    setCartItem(items.slice()); // copy same array
-
-    // ..updating total price also ----
+    items.splice(index, 1); // passing new updated array
+    setCartItem(items);
+    // .........updating total price also ----
     updateTotalPrice(items);
+    // deleting/updating from local storage also
+    localStorage.setItem("ourCart", JSON.stringify(items));
   }
 
   return (

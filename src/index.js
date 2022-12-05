@@ -18,6 +18,7 @@ root.render(
       <Route path="/register" element={<Register />}></Route>
       <Route path="/signin" element={<Login />}></Route>
       <Route path="/cart" element={<Cart />}></Route>
+      <Route path="/*" element={<p> Page not found, 404</p>}></Route>
     </Routes>
   </BrowserRouter>
 );
