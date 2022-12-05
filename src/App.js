@@ -6,18 +6,22 @@ import Login from "./pages/Login/Login";
 import Cart from "./pages/Cart/Cart";
 import Home from "./pages/Home/Home";
 import { createContext, useState } from "react";
+import { AppContext } from "./Context";
 
 function App() {
-  // 1. Create Context for application.
-  const AppContext = createContext();
-  // 2. Initialize Store.
+  // 2. Initialize Store.  creating central store for cart item count
   const [cartItems, setCartItems] = useState([]);
 
   // 3. Dispatchers (like postman)
   const dispatcherEvents = (actionType, payload) => {
     switch (actionType) {
       case "ADD_ITEM": {
-        setCartItems(...cartItems, payload);
+        // setCartItems(...cartItems, payload);
+        console.log(payload);
+        let items = cartItems.slice();
+        items.push(payload);
+        setCartItems(items);
+        console.log(items);
         break;
       }
       default: {

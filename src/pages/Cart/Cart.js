@@ -9,20 +9,13 @@ function Cart() {
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
-    // now on add to cart  we are adding the items to local storage then fetching
+    // .. adding the items to local storage then fetching
     let cart = localStorage.getItem("ourCart");
     let cartItems = JSON.parse(cart);
     if (cart) {
       setCartItem(cartItems);
       updateTotalPrice(cartItems);
     }
-
-    // fetch("product.json")
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     setCartItem(res);
-    //     updateTotalPrice(res);
-    //   });
   }, []);
 
   // Step 3: takes new quantity and update cart items. passing function as props to child
@@ -47,12 +40,14 @@ function Cart() {
   function deleteItem(index) {
     // pass by ref(as array is an object) ki vajah se refesh nahi ho raha
     //let updatedItems = [...cartItems];
-    //or
+
     let items = cartItems;
     items.splice(index, 1); // passing new updated array
     setCartItem(items);
+
     // .........updating total price also ----
     updateTotalPrice(items);
+
     // deleting/updating from local storage also
     localStorage.setItem("ourCart", JSON.stringify(items));
   }

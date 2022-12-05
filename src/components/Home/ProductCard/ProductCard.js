@@ -1,25 +1,16 @@
+import { useContext } from "react";
+import { AppContext } from "../../../Context";
 import "./ProductCard.css";
 
 function ProductCard(values) {
-  let stars = [];
-  // const ratingStart = Math.ceil(Number(values.item.rating.rate));
-  // console.log(ratingStart);
+  const { dispatcherEvents } = useContext(AppContext);
 
-  // creating local storage
   function handleAddToCart() {
-    let cart = localStorage.getItem("ourCart");
-    if (!cart) {
-      let cartItems = [];
-      cartItems.push(values.item);
-      localStorage.setItem("ourCart", JSON.stringify(cartItems));
-    } else {
-      let cartItems = JSON.parse(cart);
-      cartItems.push(values.item);
-      localStorage.setItem("ourCart", JSON.stringify(cartItems));
-    }
+    dispatcherEvents("ADD_ITEM", values.item);
     values.notify();
   }
 
+  let stars = [];
   for (let i = 0; i < Number(values.item.rating.rate); i++) {
     stars[i] = 1;
   }

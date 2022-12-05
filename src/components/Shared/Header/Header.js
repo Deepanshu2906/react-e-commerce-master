@@ -1,17 +1,11 @@
 import { useEffect } from "react";
+import { useContext } from "react";
 import { useState } from "react";
+import { AppContext } from "../../../Context";
 import "./Header.css";
 
 function Header(props) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    const items = localStorage.getItem("ourCart");
-    if (items) {
-      const cartItems = JSON.parse(items);
-      setCount(cartItems.length);
-    }
-  }, [props]);
+  const { cartItems } = useContext(AppContext);
 
   return (
     <nav className="navbar navbar-expand-lg bg-blue">
@@ -46,8 +40,10 @@ function Header(props) {
             <li className="nav-item">
               <a className="btn btn-primary" href="/cart">
                 Cart &nbsp;&nbsp;
-                {count > 0 && (
-                  <span className="badge text-bg-warning">{count}</span>
+                {cartItems.length > 0 && (
+                  <span className="badge text-bg-warning">
+                    {cartItems.length}
+                  </span>
                 )}
               </a>
             </li>
