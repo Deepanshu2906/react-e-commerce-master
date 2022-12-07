@@ -7,7 +7,6 @@ function CartItem(prop) {
 
   const { dispatcherEvents } = useContext(AppContext);
 
-  // to update to price on each refresh
   useEffect(() => {
     let price = prop.item.qty * prop.item.price;
     setPrice(Math.ceil(price));
@@ -17,11 +16,10 @@ function CartItem(prop) {
     console.log(newQuantity);
     prop.item.qty = newQuantity;
     console.log(prop.item);
-    dispatcherEvents("UPDATE_ITEM", prop.item);
   }
 
-  function handleDelete(index) {
-    prop.deleteItem(index);
+  function handleDelete() {
+    dispatcherEvents("DELETE_ITEM", prop.item.id);
   }
 
   return (
@@ -36,10 +34,7 @@ function CartItem(prop) {
       </div>
 
       <div className="container-2">
-        <button
-          onClick={() => handleDelete(prop.index)}
-          className="btn btn-danger"
-        >
+        <button onClick={handleDelete} className="btn btn-danger">
           Delete item
         </button>
         <div className="container">

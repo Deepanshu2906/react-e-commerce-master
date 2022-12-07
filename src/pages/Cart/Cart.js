@@ -22,12 +22,7 @@ function Cart() {
       <h4 className="totalPrice">Total Price: {totalPrice}</h4>
       <div>
         {cartItems.map((item, index) => (
-          <CartItem
-            // 4. Pass function as props.
-            key={index}
-            item={item}
-            id={index}
-          />
+          <CartItem key={index} item={item} id={index} />
         ))}
       </div>
     </div>

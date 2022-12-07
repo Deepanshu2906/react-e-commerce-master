@@ -7,7 +7,7 @@ import Header from "../../components/Shared/Header/Header";
 
 function Home() {
   // Creating a state for products data.
-  // whenever there is achange in products, it will force component refresh.
+  // whenever there is a change in products, it will force component refresh.
 
   const [products, setProducts] = useState([]);
 

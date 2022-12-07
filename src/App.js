@@ -30,6 +30,15 @@ function App() {
         setCartItems(items);
         break;
       }
+      case "DELETE_ITEM": {
+        let items = cartItems.slice();
+        let index = items.findIndex((p) => p.id === payload);
+        items.splice(index, 1);
+        // items.splice(index, 1);   //retuns the deleted item
+
+        setCartItems(items);
+        break;
+      }
       default: {
         console.log("INVALID...");
       }
