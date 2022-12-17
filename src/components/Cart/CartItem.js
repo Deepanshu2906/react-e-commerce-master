@@ -15,7 +15,8 @@ function CartItem(prop) {
   function handleQuantityChange(newQuantity) {
     console.log(newQuantity);
     prop.item.qty = newQuantity;
-    console.log(prop.item);
+    // console.log(prop.item);
+    dispatcherEvents("UPDATE_ITEM", prop.item);
   }
 
   function handleDelete() {

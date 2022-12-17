@@ -49,14 +49,14 @@ function Header(props) {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/register">
+              <Link className="nav-link" to="/register">
                 Register
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/signIn">
+              <Link className="nav-link" to="/signIn">
                 Sign In
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
